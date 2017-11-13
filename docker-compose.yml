@@ -1,0 +1,28 @@
+version: '2'
+
+volumes:
+  eacademico-postgres-data:
+    driver: local
+
+  eacademico-oracle-data:
+    driver: local
+
+services:
+  postgres:
+    image: santanarscs/postgresql
+    container_name: eacademico-postgres
+    volumes:
+      - eacademico-postgres-data:/var/lib/postgres/data
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_PASSWORD=eacademico
+      - POSTGRES_DB=eacademico
+      - POSTGRES_USER=eacademico
+  oracle:
+    image: santanarscs/oracle-express
+    container_name: eacademico-oracle
+    volumes:
+      - eacademico-oracle-data:/var/lib/oracle/data
+    ports:
+      - "1521:1521"
