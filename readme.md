@@ -11,6 +11,20 @@ docker build -t santanarscs/oracle-express .
 docker build -t santanarscs/postgresql .
 ```
 
+(ENtre na pasta wildfly e execute o seguinte comando)
+```
+docker build -t santanarscs/wildfly .
+```
+
+(ENtre na pasta tomcat e execute o seguinte comando)
+```
+docker build -t santanarscs/tomcat .
+```
+
+(ENtre na pasta nuxeo e execute o seguinte comando)
+```
+docker build -t santanarscs/nuxeo .
+```
 #### Verificando se as imagens estao disponíveis no docker
 
 ```

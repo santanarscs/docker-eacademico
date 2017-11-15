@@ -1,18 +1,9 @@
 version: '2'
 
-volumes:
-  eacademico-postgres-data:
-    driver: local
-
-  eacademico-oracle-data:
-    driver: local
-
 services:
   postgres:
     image: santanarscs/postgresql
     container_name: eacademico-postgres
-    volumes:
-      - eacademico-postgres-data:/var/lib/postgres/data
     ports:
       - "5432:5432"
     environment:
@@ -22,7 +13,30 @@ services:
   oracle:
     image: santanarscs/oracle-express
     container_name: eacademico-oracle
-    volumes:
-      - eacademico-oracle-data:/var/lib/oracle/data
     ports:
       - "1521:1521"
+  wildfly:
+    image: santanarscs/wildfly
+    container_name: eacademico-wildfly
+    ports:
+      - "8080:8080"
+      - "9990:9990"
+      - "8787:8787"
+    depends_on:
+      - oracle
+    links:
+      - oracle
+  tomcat:
+    image: santanarscs/tomcat
+    container_name: eacademico-tomcat
+    ports:
+      - "8084:8080"
+    depends_on:
+      - postgres
+    links:
+      - postgres
+  nuxeo:
+    image: santanarscs/nuxeo
+    container_name: eacademico-nuxeo
+    ports:
+      - "8085:8080"
