@@ -40,3 +40,8 @@ services:
     container_name: eacademico-nuxeo
     ports:
       - "8085:8080"
+  swagger:
+    image: santanarscs/swagger
+    container_name: eacademico-swagger
+    ports:
+      - "8086:8080"

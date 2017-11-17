@@ -25,6 +25,11 @@ docker build -t santanarscs/tomcat .
 ```
 docker build -t santanarscs/nuxeo .
 ```
+
+(ENtre na pasta swagger e execute o seguinte comando)
+```
+docker build -t santanarscs/swagger .
+```
 #### Verificando se as imagens estao disponíveis no docker
 
 ```
